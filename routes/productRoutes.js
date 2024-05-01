@@ -10,7 +10,7 @@ function productRoutes(fastify, options, done) {
     });
 
     fastify.get('/products/:id', async (request, reply) => {
-        await productController.getProductById(request);
+        await productController.getProductById(request, reply);
     });
 
     fastify.delete('/products/:id', async (request, reply) => {

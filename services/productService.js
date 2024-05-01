@@ -62,6 +62,7 @@ async function createProduct(productData) {
             [productData.name, productData.category, productData.price, productData.images]);
     } catch (error) {
         // Handle errors, e.g., validation error
+        console.log(error);
         throw new Error('Failed to create product');
     }
 }
