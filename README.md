@@ -7,12 +7,11 @@
 * Postgres
 * Knex
 
-
 ## Getting Started
 
 1. Navigate to the root directory.
 
-2.  run npm install to install the necessary dependencies:
+2. Run npm install to install the necessary dependencies:
 
 ```bash
 npm install
@@ -57,36 +56,36 @@ npx knex seed:run --env development --knexfile=config/knexfile.js
 node index
 ```
 
-7. To test the endpoints using postman, navigate to `1_postman_testing_script` folder to find the exported `Products_Backend_Endpoints.postman_collection` file that can be imported into your Postman workspace. In the next section, the test cases are specified.
+7. To test the endpoints using postman, navigate to `1_postman_testing_script` folder to find the exported `Products_Backend_Endpoints.postman_collection.json` file that can be imported into your Postman workspace. In the next section, the test cases are specified.
 
 
 ## Test cases for testing endpoints
 
-#### Get Products with name using pagination
+#### 1. Get Products with name using pagination
 
 * As there are 4 products with the name 'Smartphone' in the seed file, it can be tested on the GET `/products` endpoint as follows:
     * name=Smartphone&page=1&limit=2
     * name=Smartphone&page=2&limit=2
 
-#### Get Single Product by ID
+#### 2. Get Single Product by ID
 
 * The following test cases can be used on the GET `/products/:id` endpoint:
-    *  ID that already exists in the table (eg. 1 as specified in `1_postman_testing_script` file)
+    *  ID that already exists in the table (eg. 1 as specified in `Products_Backend_Endpoints.postman_collection.json` file)
     *  any other ID that doesn't exist in the table, in which case an error message appears
 
-#### Delete Product by ID
+#### 3. Delete Product by ID
 
 * The following test cases can be used on the DELETE `/products/:id` endpoint:
-    *  ID that already exists in the table (eg. 1 as specified in `1_postman_testing_script` file)
+    *  ID that already exists in the table (eg. 1 as specified in `Products_Backend_Endpoints.postman_collection.json` file)
     *  any other ID that doesn't exist in the table, in which case an error message appears
 
-#### Update Product by ID
+#### 4. Update Product by ID
 
 * The following test cases can be used on the PUT `/products/:id` endpoint:
-    *  ID that already exists in the table (eg. 10 as specified in `1_postman_testing_script` file)
+    *  ID that already exists in the table (eg. 10 as specified in `Products_Backend_Endpoints.postman_collection.json` file)
     *  any other ID that doesn't exist in the table, in which case an error message appears
 
-#### Create Product
+#### 5. Create Product
 
 * The following test cases can be used on the POST `/createProduct` endpoint:
     *  request body with name, category, price and/or images specified

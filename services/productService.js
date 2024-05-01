@@ -1,5 +1,5 @@
 const pgp = require('pg-promise')();
-const knexConfig = require('../config/knexfile.js'); // Adjust the path accordingly
+const knexConfig = require('../config/knexfile.js');
 
 const environment = process.env.NODE_ENV || 'development'; // Default to 'development' if NODE_ENV is not set
 const knex = require('knex')(knexConfig[environment]);
