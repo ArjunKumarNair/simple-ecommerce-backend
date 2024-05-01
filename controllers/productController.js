@@ -4,18 +4,18 @@ const productService = require('../services/productService');
 async function getProducts(request, reply) {
     try {
         const queryParams = request.query;
-        console.log(queryParams);
+        console.log("Query Params", queryParams);
         const products = await productService.getProducts(queryParams);
         reply.send(products);
     } catch (error) {
-        reply.status(500).send({ error: 'Internal Server Error' });
+        reply.status(404).send({ error: error.message });
     }
 }
 
 async function getProductById(request, reply) {
     try {
         const productId = request.params.id;
-        console.log(productId);
+        console.log("Product ID", productId);
         const product = await productService.getProductById(productId);
         reply.send(product);
     } catch (error) {
@@ -26,7 +26,7 @@ async function getProductById(request, reply) {
 async function deleteProduct(request, reply) {
     try {
         const productId = request.params.id;
-        console.log(productId);
+        console.log("Product ID", productId);
         await productService.deleteProduct(productId);
         reply.send({ message: 'Product deleted successfully' });
     } catch (error) {

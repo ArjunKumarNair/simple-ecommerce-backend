@@ -22,8 +22,6 @@ async function getProducts(queryParams) {
         query += ` LIMIT $${params.length + 1} OFFSET $${params.length + 2}`;
         params.push(limit, offset);
 
-        // return await db.any('SELECT * FROM products');
-
         return await db.any(query, params);
     } catch (error) {
         throw new Error('Failed to fetch products: ' + error.message);
@@ -32,33 +30,58 @@ async function getProducts(queryParams) {
 
 async function getProductById(productId) {
     try {
-        // const product = await db.oneOrNone('SELECT * FROM products');
         const product = await db.oneOrNone('SELECT * FROM products WHERE id = $1', productId);
+        console.log("Product", product);
         if (!product) {
             throw new Error(`Product with ID ${productId} not found`);
         }
         return product;
     } catch (error) {
-        // Handle other errors, such as database connection errors
-        throw new Error(`Failed to retrieve product with ID ${productId}`);
+        if (error.message.startsWith('Product with ID')) {
+            throw error;
+        }
+        else {
+            // Handle other errors, such as database connection errors
+            throw new Error(`Failed to retrieve product with ID ${productId}`);
+        }
     }
 }
 
 async function deleteProduct(productId) {
     try {
+        // Check if the product exists before deleting
+        const existingProduct = await getProductById(productId);
+        if (!existingProduct) {
+            throw new Error(`Product with ID ${productId} does not exist`);
+        }
         await db.none('DELETE FROM products WHERE id = $1', productId);
     } catch (error) {
-        throw new Error(`Failed to delete product with ID ${productId}`);
+        if (error.message.startsWith('Product with ID')) {
+            throw error;
+        }
+        else {
+            throw new Error(`Failed to delete product with ID ${productId}`);
+        }
     }
 }
 
 async function updateProduct(productId, productData) {
     try {
+        // Check if the product exists before deleting
+        const existingProduct = await getProductById(productId);
+        if (!existingProduct) {
+            throw new Error(`Product with ID ${productId} does not exist`);
+        }
         await db.none('UPDATE products SET name = $1, category = $2, price = $3, images = $4 WHERE id = $5',
             [productData.name, productData.category, productData.price, productData.images, productId]);
     } catch (error) {
         // Handle errors, e.g., product not found
-        throw new Error(`Failed to update product with ID ${productId}`);
+        if (error.message.startsWith('Product with ID')) {
+            throw error;
+        }
+        else {
+            throw new Error(`Failed to update product with ID ${productId}`);
+        }
     }
 }
 

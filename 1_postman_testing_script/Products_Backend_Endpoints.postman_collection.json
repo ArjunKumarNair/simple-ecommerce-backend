@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "e7928c36-0eed-4672-a0f0-32ce4bb8d411",
+		"name": "Products_Backend_Endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29230483"
+	},
+	"item": [
+		{
+			"name": "1_Get_Products_with_name_using_pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/products?name=Smartphone&page=2&limit=2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Smartphone"
+						},
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2_Get_Single_Product_by_id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/products/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3_Delete_Product_by_ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/products/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4_Update_Product_by_ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let requestBody = JSON.parse(pm.request.body.raw);\r",
+							"requestBody.images = JSON.stringify(requestBody.images);\r",
+							"pm.request.body.raw = JSON.stringify(requestBody);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Haircare Product\",\r\n    \"category\": \"Beauty & Personal Care\",\r\n    \"price\": 11.99,\r\n    \"images\": [\"haircare4.jpg\", \"haircare5.jpg\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/products/10",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5_Create_Product",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let requestBody = JSON.parse(pm.request.body.raw);\r",
+							"requestBody.images = JSON.stringify(requestBody.images);\r",
+							"pm.request.body.raw = JSON.stringify(requestBody);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Smartphone\",\r\n    \"category\": \"Electronics\",\r\n    \"price\": 1800,\r\n    \"images\": [\"Smartphone7.jpg\",\"Smartphone8.jpg\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/createProduct",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"createProduct"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -15,6 +15,10 @@ exports.seed = async function(knex) {
     { name: 'Yoga Mat', category: 'Sports & Outdoors', price: 29.99, images: JSON.stringify(['yogamat1.jpg', 'yogamat2.jpg']) },
     { name: 'Running Shoes', category: 'Sports & Outdoors', price: 89.99, images: JSON.stringify(['runningshoes1.jpg', 'runningshoes2.jpg']) },
     { name: 'Skincare Product', category: 'Beauty & Personal Care', price: 24.99, images: JSON.stringify(['skincare1.jpg', 'skincare2.jpg']) },
-    { name: 'Haircare Product', category: 'Beauty & Personal Care', price: 14.99, images: JSON.stringify(['haircare1.jpg', 'haircare2.jpg']) }
+    { name: 'Haircare Product', category: 'Beauty & Personal Care', price: 14.99, images: JSON.stringify(['haircare1.jpg', 'haircare2.jpg']) },
+    { name: 'Smartphone', category: 'Electronics', price: 699.99, images: JSON.stringify(['smartphone3.jpg', 'smartphone4.jpg']) },
+    { name: 'Smartphone', category: 'Electronics', price: 699.99, images: JSON.stringify(['smartphone5.jpg', 'smartphone6.jpg']) },
+    { name: 'Smartphone', category: 'Electronics', price: 699.99, images: JSON.stringify(['smartphone7.jpg', 'smartphone8.jpg']) },
+    { name: 'Smartphone', category: 'Electronics', price: 699.99, images: JSON.stringify(['smartphone9.jpg', 'smartphone10.jpg']) }
   ]);
 };
