@@ -1,5 +1,7 @@
 ## About the Repository
 
+This is a backend that can perform basic CRUD operations for e-commerce websites.
+
 ### Built With
 
 * Node.js
